@@ -36,7 +36,7 @@ export class FSM {
       process.condition(this.store as Store, args) :
       process.condition;
 
-    return condition ? this.run(process.then, args) : this.run(process.else, args);
+    return this.run(condition ? process.then : process.else, args);
   }
 
   async execParallel(children: Process[], args: any): Promise<Array<any>> {
